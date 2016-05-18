@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>URL Viewer</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.18.0/URI.min.js"></script>
+    <script src="js/main.js"></script>
+    <style>
+    </style>
+</head>
+<body data-ng-app="mainApp" data-ng-controller="mainController">
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo">URL Viewer</a>
+    </div>
+</nav>
+
+<br>
+
+<div class="row">
+    <div data-ng-include="'decoder.html'"
+         data-ng-repeat="x in range(state.currentUrls) track by $index"
+         class="col"
+         data-ng-class="{'s12': state.currentUrls==1, 's6': state.currentUrls==2, 's4': state.currentUrls==3}"></div>
+</div>
+
+<div>{{state.currentUrls}}</div>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large waves-effect waves-light red"
+       data-ng-if="state.currentUrls > 1"
+       data-ng-click="state.currentUrls=state.currentUrls-1">
+        <i class="material-icons">remove</i>
+    </a>
+    <a class="btn-floating btn-large waves-effect waves-light red"
+       data-ng-if="state.currentUrls < state.maxUrls"
+       data-ng-click="state.currentUrls=state.currentUrls+1">
+        <i class="material-icons">add</i>
+    </a>
+</div>
+</body>
+</html>

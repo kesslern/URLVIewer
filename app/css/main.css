@@ -1,0 +1,15 @@
+span {
+    float: left;
+}
+
+div.center-align h4 {
+    display: inline-block;
+}
+
+h4.flow-text {
+    font-weight: bold;
+}
+
+.flow-text span {
+    word-break: break-all;
+}

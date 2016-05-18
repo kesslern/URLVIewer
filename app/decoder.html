@@ -1,0 +1,51 @@
+<div class="container" ng-controller="urlDecoder">
+    <div class="row">
+        <div class="input-field col s12">
+            <label for="url">Enter a URL</label>
+            <input id="url" type="text"
+                   data-ng-model="url"
+                   data-ng-change="parse()">
+        </div>
+        <div class="input-field col s6">
+            <label for="key-filter">Filter keys</label>
+            <input id="key-filter" type="text"
+                   data-ng-model="filter.key"
+                   data-ng-init="filter.key=''">
+        </div>
+        <div class="input-field col s6">
+            <label for="value-filter">Filter values</label>
+            <input id="value-filter" type="text"
+                   data-ng-model="filter.value"
+                   data-ng-init="filter.value=''">
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="center-align row">
+        <h4 class="flow-text">
+            <span class="teal-text" ng-if="parsed.uri.protocol">{{parsed.uri.protocol}}://</span>
+            <span class="green-text">{{parsed.uri.hostname}}</span>
+            <span class="red-text" ng-if="parsed.uri.port">:{{parsed.uri.port}}</span>
+            <span class="purple-text" ng-if="parsed.uri.hostname">{{parsed.uri.path}}</span>
+        </h4>
+    </div>
+
+    <div class="row">
+        <table class="striped col s12" ng-if="parsed.params">
+            <thead>
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="(key, value) in parsed.params | with:filter.key:filter.value">
+                <td>{{key}}</td>
+                <td>{{value}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

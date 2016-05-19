@@ -41,7 +41,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="param in parsed.params | with:filter.key:filter.value">
+            <tr ng-repeat="param in parsed.params" ng-show="param.key.indexOf(filter.key)>-1 && param.value.indexOf(filter.value)>-1">
                 <td><edit-in-place value="param.key"></edit-in-place></td>
                 <td><edit-in-place value="param.value"></edit-in-place></td>
             </tr>

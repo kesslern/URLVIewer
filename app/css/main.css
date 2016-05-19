@@ -13,3 +13,24 @@ h4.flow-text {
 .flow-text span {
     word-break: break-all;
 }
+
+.open-uri {
+    cursor: pointer;
+}
+
+.edit-in-place span {
+    cursor: pointer;
+}
+
+.edit-in-place input {
+    display: none;
+    border-bottom: none;
+}
+
+.edit-in-place.active span {
+    display: none;
+}
+
+.edit-in-place.active input {
+    display: inline-block;
+}

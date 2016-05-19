@@ -24,11 +24,11 @@
     <br>
 
     <div class="center-align row">
-        <h4 class="flow-text">
+        <h4 class="flow-text" data-ng-click="openUri()">
             <span class="teal-text" ng-if="parsed.uri.protocol">{{parsed.uri.protocol}}://</span>
             <span class="green-text">{{parsed.uri.hostname}}</span>
             <span class="red-text" ng-if="parsed.uri.port">:{{parsed.uri.port}}</span>
-            <span class="purple-text" ng-if="parsed.uri.hostname">{{parsed.uri.path}}</span>
+            <span class="purple-text" ng-if="parsed.uri.path">{{parsed.uri.path}}</span>
         </h4>
     </div>
 
@@ -41,9 +41,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="(key, value) in parsed.params | with:filter.key:filter.value">
-                <td>{{key}}</td>
-                <td>{{value}}</td>
+            <tr ng-repeat="param in parsed.params | with:filter.key:filter.value">
+                <td><edit-in-place value="param.key"></edit-in-place></td>
+                <td><edit-in-place value="param.value"></edit-in-place></td>
             </tr>
             </tbody>
         </table>

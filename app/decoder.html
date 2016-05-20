@@ -21,10 +21,9 @@
     </div>
 
     <br>
-    <br>
 
     <div class="center-align row">
-        <h4 class="flow-text" data-ng-click="openUri()">
+        <h4 class="flow-text open-uri" data-ng-click="openUri()">
             <span class="teal-text" ng-if="parsed.uri.protocol">{{parsed.uri.protocol}}://</span>
             <span class="green-text">{{parsed.uri.hostname}}</span>
             <span class="red-text" ng-if="parsed.uri.port">:{{parsed.uri.port}}</span>
@@ -32,20 +31,34 @@
         </h4>
     </div>
 
-    <div class="row">
-        <table class="striped col s12" ng-if="parsed.params">
-            <thead>
-            <tr>
-                <th>Key</th>
-                <th>Value</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="param in parsed.params" ng-show="param.key.indexOf(filter.key)>-1 && param.value.indexOf(filter.value)>-1">
-                <td><edit-in-place value="param.key"></edit-in-place></td>
-                <td><edit-in-place value="param.value"></edit-in-place></td>
-            </tr>
-            </tbody>
-        </table>
+    <br>
+
+    <div class="center-align row"
+         ng-show="parsed.params">
+        <div class="divider"></div>
+        <div class="col s6">
+            <h5>Key</h5>
+        </div>
+        <div class="col s6">
+            <h5>Value</h5>
+        </div>
+    </div>
+
+    <div ng-repeat="param in parsed.params track by $index"
+         ng-show="param.key.indexOf(filter.key)>-1 && param.value.indexOf(filter.value)>-1"
+         class="row parameter-row"
+         data-ng-class="{'blue-grey lighten-5': $index%2==0}">
+        <div class="col s6">
+            <textarea id="key{{$index}}"
+                      class="materialize-textarea parameter"
+                      data-input-field
+                      data-ng-model="param.key"></textarea>
+        </div>
+        <div class="col s6">
+            <textarea id="value{{$index}}"
+                      class="materialize-textarea parameter"
+                      data-input-field
+                      data-ng-model="param.value"></textarea>
+        </div>
     </div>
 </div>

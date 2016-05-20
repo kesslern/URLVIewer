@@ -18,19 +18,12 @@ h4.flow-text {
     cursor: pointer;
 }
 
-.edit-in-place span {
-    cursor: pointer;
+.parameter-row {
+    margin-bottom: 0;
 }
 
-.edit-in-place input {
-    display: none;
+textarea.parameter {
+    padding-top: .5em;
+    padding-bottom: 0;
     border-bottom: none;
-}
-
-.edit-in-place.active span {
-    display: none;
-}
-
-.edit-in-place.active input {
-    display: inline-block;
 }

@@ -23,11 +23,15 @@
     <br>
 
     <div class="center-align row">
-        <h4 class="flow-text open-uri" data-ng-click="openUri()">
+        <h4 class="flow-text open-uri"
+            title="Open in new tab"
+            data-ng-click="openUri()"
+            ng-if="parsed.uri.hostname">
             <span class="teal-text" ng-if="parsed.uri.protocol">{{parsed.uri.protocol}}://</span>
             <span class="green-text">{{parsed.uri.hostname}}</span>
             <span class="red-text" ng-if="parsed.uri.port">:{{parsed.uri.port}}</span>
             <span class="purple-text" ng-if="parsed.uri.path">{{parsed.uri.path}}</span>
+            &nbsp;<i class="material-icons">arrow_forward</i>
         </h4>
     </div>
 

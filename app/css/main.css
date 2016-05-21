@@ -26,4 +26,7 @@ textarea.parameter {
     padding-top: .5em;
     padding-bottom: 0;
     border-bottom: none;
+    margin: 1em .25em;
+    min-height: 2em;
+    height: 2em;
 }

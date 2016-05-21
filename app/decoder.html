@@ -52,12 +52,14 @@
             <textarea id="key{{$index}}"
                       class="materialize-textarea parameter"
                       data-input-field
+                      data-ng-change="reconstructUrl()"
                       data-ng-model="param.key"></textarea>
         </div>
         <div class="col s6">
             <textarea id="value{{$index}}"
                       class="materialize-textarea parameter"
                       data-input-field
+                      data-ng-change="reconstructUrl()"
                       data-ng-model="param.value"></textarea>
         </div>
     </div>

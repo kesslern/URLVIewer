@@ -25,6 +25,14 @@ angular.module("mainApp", [])
         };
 
         $scope.openUri = function() {
+            window.open(createUriFromView(), "_blank");
+        };
+
+        $scope.reconstructUrl = function() {
+            $scope.url = createUriFromView();
+        };
+
+        var createUriFromView = function() {
             var parsedUri = $scope.parsed.uri;
             var params = $scope.parsed.params;
             var uri = URI()
@@ -37,6 +45,6 @@ angular.module("mainApp", [])
                 uri.addSearch(param.key, param.value);
             });
 
-            window.open(uri, "_blank");
-        };
+            return uri;
+        }
     }]);

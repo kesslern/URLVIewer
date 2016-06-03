@@ -32,6 +32,11 @@ angular.module("mainApp", [])
             $scope.url = createUriFromView();
         };
 
+        $scope.sharableUri = function () {
+            var baseUrl = window.location.href.replace(/#.*$/, "");
+            return baseUrl + "#/" + $scope.url;
+        };
+
         var createUriFromView = function() {
             var parsedUri = $scope.parsed.uri;
             var params = $scope.parsed.params;

@@ -22,23 +22,28 @@
 
     <br>
 
-    <div class="center-align row">
-        <h4 class="flow-text open-uri"
-            title="Open in new tab"
-            data-ng-click="openUri()"
-            ng-if="parsed.uri.hostname">
+    <div class="center open-uri valign-wrapper"
+         ng-if="parsed.uri.hostname">
+        <i class="material-icons"
+           title="Permalink to this URL in the URLViewer"
+           data-ng-click="openUriInViewer()">
+            <a href="{{sharableUri()}}" target="_blank" class="black-text">share</a>
+        </i>&nbsp;&nbsp;
+        <h4 class="flow-text"
+            title="Open this URL in new tab"
+            data-ng-click="openUri()">
             <span class="teal-text" ng-if="parsed.uri.protocol">{{parsed.uri.protocol}}://</span>
             <span class="green-text">{{parsed.uri.hostname}}</span>
             <span class="red-text" ng-if="parsed.uri.port">:{{parsed.uri.port}}</span>
             <span class="purple-text" ng-if="parsed.uri.path">{{parsed.uri.path}}</span>
-            &nbsp;<i class="material-icons">arrow_forward</i>
         </h4>
+        &nbsp;<i class="material-icons" title="Open URL in new tab">arrow_forward</i>
     </div>
 
     <br>
 
     <div class="center-align row"
-         ng-show="parsed.params">
+         ng-show="parsed.params.length>0">
         <div class="divider"></div>
         <div class="col s6">
             <h5>Key</h5>
@@ -48,21 +53,23 @@
         </div>
     </div>
 
-    <div ng-repeat="param in parsed.params track by $index"
-         ng-show="param.key.indexOf(filter.key)>-1 && param.value.indexOf(filter.value)>-1"
-         class="row parameter-row"
-         data-ng-class="{'blue-grey lighten-5': $index%2==0}">
-        <div class="col s6" data-input-field>
-            <textarea id="key{{$index}}"
-                      class="materialize-textarea parameter"
-                      data-ng-change="reconstructUrl()"
-                      data-ng-model="param.key"></textarea>
-        </div>
-        <div class="col s6" data-input-field>
-            <textarea id="value{{$index}}"
-                      class="materialize-textarea parameter"
-                      data-ng-change="reconstructUrl()"
-                      data-ng-model="param.value"></textarea>
+    <div data-ng-if="parsed.params.length>0">
+        <div ng-repeat="param in parsed.params track by $index"
+             ng-show="param.key.indexOf(filter.key)>-1 && param.value.indexOf(filter.value)>-1"
+             class="row parameter-row"
+             data-ng-class="{'blue-grey lighten-5': $index%2==0}">
+            <div class="col s6" data-input-field>
+                <textarea id="key{{$index}}"
+                          class="materialize-textarea parameter"
+                          data-ng-change="reconstructUrl()"
+                          data-ng-model="param.key"></textarea>
+            </div>
+            <div class="col s6" data-input-field>
+                <textarea id="value{{$index}}"
+                          class="materialize-textarea parameter"
+                          data-ng-change="reconstructUrl()"
+                          data-ng-model="param.value"></textarea>
+            </div>
         </div>
     </div>
 </div>

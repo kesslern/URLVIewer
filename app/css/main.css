@@ -30,3 +30,7 @@ textarea.parameter {
     min-height: 2em;
     height: 2em;
 }
+
+.center {
+    justify-content: center;
+}

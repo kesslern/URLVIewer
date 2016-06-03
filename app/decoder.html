@@ -1,18 +1,18 @@
 <div class="container" ng-controller="urlDecoder">
     <div class="row">
-        <div class="input-field col s12">
+        <div class="col s12" data-input-field>
             <label for="url">Enter a URL</label>
             <input id="url" type="text"
                    data-ng-model="url"
                    data-ng-change="parse()">
         </div>
-        <div class="input-field col s6">
+        <div class="col s6" data-input-field>
             <label for="key-filter">Filter keys</label>
             <input id="key-filter" type="text"
                    data-ng-model="filter.key"
                    data-ng-init="filter.key=''">
         </div>
-        <div class="input-field col s6">
+        <div class="col s6" data-input-field>
             <label for="value-filter">Filter values</label>
             <input id="value-filter" type="text"
                    data-ng-model="filter.value"
@@ -52,17 +52,15 @@
          ng-show="param.key.indexOf(filter.key)>-1 && param.value.indexOf(filter.value)>-1"
          class="row parameter-row"
          data-ng-class="{'blue-grey lighten-5': $index%2==0}">
-        <div class="col s6">
+        <div class="col s6" data-input-field>
             <textarea id="key{{$index}}"
                       class="materialize-textarea parameter"
-                      data-input-field
                       data-ng-change="reconstructUrl()"
                       data-ng-model="param.key"></textarea>
         </div>
-        <div class="col s6">
+        <div class="col s6" data-input-field>
             <textarea id="value{{$index}}"
                       class="materialize-textarea parameter"
-                      data-input-field
                       data-ng-change="reconstructUrl()"
                       data-ng-model="param.value"></textarea>
         </div>

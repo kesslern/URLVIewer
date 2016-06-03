@@ -46,5 +46,21 @@ angular.module("mainApp", [])
             });
 
             return uri;
-        }
+        };
+
+        var currentAnchor = function() {
+            var url = '';
+
+            if (window.location.href.indexOf('#') != -1) {
+                url = window.location.href.substring(window.location.href.indexOf('#') + 1);
+                if (url.substring(0,1) === '/') {
+                    url = url.substring(1);
+                }
+            }
+
+            return url;
+        };
+
+        $scope.url = currentAnchor();
+        $scope.parse();
     }]);

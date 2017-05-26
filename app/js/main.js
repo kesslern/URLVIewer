@@ -1,3 +1,7 @@
+require('../decoder.html');
+require('../index.html');
+require('../css/main.css');
+
 angular.module("mainApp", [])
     .controller('mainController', ['$scope', function($scope) {
 
